@@ -113,6 +113,7 @@ public class TaxiBOT extends TelegramLongPollingBot {
                 Optional<User> optional = this.repository.findById(message.getChatId());
                 if (message.getText().equals("/start")) {
                     returnMessage = stageContact(message);
+                    execute(returnMessage);
                     if (optional.isEmpty()) {
                         User user = new User();
                         user.setChatId(update.getMessage().getChatId());
@@ -120,11 +121,10 @@ public class TaxiBOT extends TelegramLongPollingBot {
                         user.setFirstName(message.getChat().getFirstName());
                         repository.save(user);
                     }else {
-                        User user = new User();
+                        User user = optional.get();
                         user.setStep(BotQuery.FIRST);
                         repository.save(user);
                     }
-                    execute(returnMessage);
                 } else if (message.getText().equals("Yolovchi\uD83E\uDDCD\u200D♂\uFE0F")) {
                     if (optional.isPresent()) {
                         User user = optional.get();
