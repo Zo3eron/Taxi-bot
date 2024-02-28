@@ -1,0 +1,25 @@
+version: '3'
+services:
+  first_app:
+    container_name: clean-bot
+    build: .
+    restart: always
+    ports:
+      - "8011:8891"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/taxi_db
+      SPRING_DATASOURCE_USERNAME: taxi_user
+      SPRING_DATASOURCE_PASSWORD: root
+    depends_on:
+      - postgres
+  postgres:
+    container_name: postgres-db
+    image: "postgres:15"
+    restart: always
+    ports:
+      - "5422:5424"
+    environment:
+      POSTGRES_DB: taxi_db
+      POSTGRES_USER: taxi_user
+      POSTGRES_PASSWORD: root
+

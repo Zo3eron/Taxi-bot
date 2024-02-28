@@ -1,0 +1,7 @@
+com\example\Demo\Bot\UserRepository.class
+com\example\Demo\Bot\DemoBotApplication.class
+com\example\Demo\Bot\User.class
+com\example\Demo\Bot\BotQuery.class
+com\example\Demo\Bot\TaxiBOT.class
+com\example\Demo\Bot\User$UserBuilder.class
+com\example\Demo\Bot\RegisBot.class
