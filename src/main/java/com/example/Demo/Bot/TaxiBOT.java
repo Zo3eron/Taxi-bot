@@ -45,29 +45,28 @@ public class TaxiBOT extends TelegramLongPollingBot {
                 Pattern regexPattern = Pattern.compile(BotQuery.pattern);
                 Matcher matcher = regexPattern.matcher(message.getText());
 
-                returnMessage.setChatId(String.valueOf(message.getChatId()));
 
-                KeyboardRow firstRow = new KeyboardRow();
-
-                KeyboardButton vipInfoButton = new KeyboardButton();
-                vipInfoButton.setText("Vip haqida ‼\uFE0F");
-
-                firstRow.add(vipInfoButton);
-
-                List<KeyboardRow> rowList = new ArrayList<>();
-                rowList.add(firstRow);
-
-                ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
-                replyKeyboardMarkup.setResizeKeyboard(true);
-                replyKeyboardMarkup.setKeyboard(rowList);
-
-                returnMessage.setReplyMarkup(replyKeyboardMarkup);
-                execute(returnMessage);
 
                 if (message.getFrom().getUserName()!= null) {
                     if (matcher.find()) {
                         returnMessage.setChatId(String.valueOf(message.getChatId()));
                         returnMessage.setText("Xurmatli \n" + "Klient \n" + "Sizning zakasingiz shafyorlar guruhiga tushdi\n" + "\n" + "Lichkangizda Ishonchlik shafyorlarimiz kutmoqda\n" + "\n" + "Qulaylik uchun bot orqali zakas bering\uD83D\uDC47");
+
+                        KeyboardRow firstRow = new KeyboardRow();
+
+                        KeyboardButton vipInfoButton = new KeyboardButton();
+                        vipInfoButton.setText("Vip haqida ‼\uFE0F");
+
+                        firstRow.add(vipInfoButton);
+
+                        List<KeyboardRow> rowList = new ArrayList<>();
+                        rowList.add(firstRow);
+
+                        ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
+                        replyKeyboardMarkup.setResizeKeyboard(true);
+                        replyKeyboardMarkup.setKeyboard(rowList);
+                        returnMessage.setReplyMarkup(replyKeyboardMarkup);
+
                         InlineKeyboardMarkup markupInline = new InlineKeyboardMarkup();
                         List<List<InlineKeyboardButton>> rowsInline = new ArrayList<>();
                         List<InlineKeyboardButton> rowInline = new ArrayList<>();
