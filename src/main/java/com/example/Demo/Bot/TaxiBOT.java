@@ -7,10 +7,15 @@ import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.ParseMode;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.updatingmessages.DeleteMessage;
+import org.telegram.telegrambots.meta.api.methods.updatingmessages.EditMessageReplyMarkup;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardRemove;
+import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardRemove;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
@@ -33,12 +38,29 @@ public class TaxiBOT extends TelegramLongPollingBot {
     public void onUpdateReceived(Update update) {
         SendMessage returnMessage = new SendMessage();
         Message message = update.getMessage();
+
         if (message.hasText()) {
             if (!message.getChat().isUserChat()) {
                 Optional<User> optional = this.repository.findById(message.getChatId());
                 Pattern regexPattern = Pattern.compile(BotQuery.pattern);
-
                 Matcher matcher = regexPattern.matcher(message.getText());
+
+                KeyboardRow firstRow = new KeyboardRow();
+
+                KeyboardButton vipInfoButton = new KeyboardButton();
+                vipInfoButton.setText("Vip haqida ‼\uFE0F");
+
+                firstRow.add(vipInfoButton);
+
+                List<KeyboardRow> rowList = new ArrayList<>();
+                rowList.add(firstRow);
+
+                ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
+                replyKeyboardMarkup.setResizeKeyboard(true);
+                replyKeyboardMarkup.setKeyboard(rowList);
+
+                returnMessage.setReplyMarkup(replyKeyboardMarkup);
+                execute(returnMessage);
 
                 if (message.getFrom().getUserName()!= null) {
                     if (matcher.find()) {
@@ -90,6 +112,21 @@ public class TaxiBOT extends TelegramLongPollingBot {
                         rowsInline2.add(rowInline2);
                         markupInline2.setKeyboard(rowsInline2);
                         returnMessage.setReplyMarkup(markupInline2);
+                        execute(returnMessage);
+                    } else  if (message.getText().equals("Vip haqida ‼\uFE0F") || message.getText().equals("Orqaga")) {
+                        deleteMessage(String.valueOf(message.getChatId()), message.getMessageId());
+                        returnMessage.setChatId(String.valueOf(message.getChatId()));
+                        returnMessage.setText("VIP qoshilish 100 ming som");
+                        InlineKeyboardMarkup markupInline = new InlineKeyboardMarkup();
+                        List<List<InlineKeyboardButton>> rowsInline = new ArrayList<>();
+                        List<InlineKeyboardButton> rowInline = new ArrayList<>();
+                        InlineKeyboardButton button = new InlineKeyboardButton();
+                        button.setText("VIP");
+                        button.setUrl("https://t.me/Sanjar_Kamilovich");
+                        rowInline.add(button);
+                        rowsInline.add(rowInline);
+                        markupInline.setKeyboard(rowsInline);
+                        returnMessage.setReplyMarkup(markupInline);
                         execute(returnMessage);
                     }
                 } else if (message.getFrom().getUserName()== null&& matcher.find()) {
@@ -351,6 +388,7 @@ public class TaxiBOT extends TelegramLongPollingBot {
         sendMessage.setReplyMarkup(replyKeyboardMarkup);
         return sendMessage;
     }
+
 
     public void deleteMessage(String chatId, int messageId) throws TelegramApiException {
         DeleteMessage deleteMessage = new DeleteMessage(chatId, messageId);
