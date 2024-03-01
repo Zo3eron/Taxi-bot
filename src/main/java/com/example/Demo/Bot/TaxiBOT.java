@@ -45,6 +45,8 @@ public class TaxiBOT extends TelegramLongPollingBot {
                 Pattern regexPattern = Pattern.compile(BotQuery.pattern);
                 Matcher matcher = regexPattern.matcher(message.getText());
 
+                returnMessage.setChatId(String.valueOf(message.getChatId()));
+
                 KeyboardRow firstRow = new KeyboardRow();
 
                 KeyboardButton vipInfoButton = new KeyboardButton();
