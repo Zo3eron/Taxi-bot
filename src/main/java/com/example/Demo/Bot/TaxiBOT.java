@@ -114,7 +114,7 @@ public class TaxiBOT extends TelegramLongPollingBot {
                         markupInline2.setKeyboard(rowsInline2);
                         returnMessage.setReplyMarkup(markupInline2);
                         execute(returnMessage);
-                    } else  if (message.getText().equals("Vip haqida ‼\uFE0F") || message.getText().equals("Orqaga")) {
+                    } else  if (message.getText().equals("Vip haqida ‼\uFE0F") || message.getText().equals("Orqaga") || message.getText().equals("Yolovchi\uD83E\uDDCD\u200D♂\uFE0F")|| message.getText().equals("Haydovchi\uD83D\uDE95")) {
                         deleteMessage(String.valueOf(message.getChatId()), message.getMessageId());
                         returnMessage.setChatId(String.valueOf(message.getChatId()));
                         returnMessage.setText("VIP qoshilish 100 ming som");
