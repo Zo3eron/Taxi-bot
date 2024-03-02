@@ -46,8 +46,7 @@ public class TaxiBOT extends TelegramLongPollingBot {
                 Matcher matcher = regexPattern.matcher(message.getText());
 
 
-
-                if (message.getFrom().getUserName()!= null) {
+                if (message.getFrom().getUserName() != null) {
                     if (matcher.find()) {
                         returnMessage.setChatId(String.valueOf(message.getChatId()));
                         returnMessage.setText("Xurmatli \n" + "Klient \n" + "Sizning zakasingiz shafyorlar guruhiga tushdi\n" + "\n" + "Lichkangizda Ishonchlik shafyorlarimiz kutmoqda\n" + "\n" + "Qulaylik uchun bot orqali zakas bering\uD83D\uDC47");
@@ -99,6 +98,7 @@ public class TaxiBOT extends TelegramLongPollingBot {
                             execute(returnMessage);
                         }
                         // todo : vip grup id bolad
+
                         returnMessage.setChatId("-1002075492453");
                         returnMessage.setParseMode(ParseMode.HTML);
                         returnMessage.setText("<b><a href='tg://user?id=" + message.getFrom().getId() + "'>" + message.getFrom().getFirstName() + "</a>dan zakaz keldi: </b>\n\n" + message.getText());
@@ -114,7 +114,26 @@ public class TaxiBOT extends TelegramLongPollingBot {
                         markupInline2.setKeyboard(rowsInline2);
                         returnMessage.setReplyMarkup(markupInline2);
                         execute(returnMessage);
-                    } else  if (message.getText().equals("Vip haqida ‼\uFE0F") || message.getText().equals("Orqaga") || message.getText().equals("Haydovchi\uD83D\uDE95")) {
+
+
+                        returnMessage.setChatId("-1002098277522");
+                        returnMessage.setParseMode(ParseMode.HTML);
+                        returnMessage.setText("<b><a href='tg://user?id=" + message.getFrom().getId() + "'>" + message.getFrom().getFirstName() + "</a>dan zakaz keldi: </b>\n\n" + message.getText());
+
+                        InlineKeyboardMarkup bsd = new InlineKeyboardMarkup();
+                        List<List<InlineKeyboardButton>> bcd = new ArrayList<>();
+                        List<InlineKeyboardButton> eds = new ArrayList<>();
+                        InlineKeyboardButton but = new InlineKeyboardButton();
+                        but.setText("ZAKAZCHI");
+                        but.setUrl("tg://user?id=" + message.getFrom().getId());
+                        eds.add(but);
+                        bcd.add(eds);
+                        bsd.setKeyboard(bcd);
+                        returnMessage.setReplyMarkup(bsd);
+                        execute(returnMessage);
+
+
+                    } else if (message.getText().equals("Vip haqida ‼\uFE0F") || message.getText().equals("Orqaga") || message.getText().equals("Haydovchi\uD83D\uDE95")) {
                         deleteMessage(String.valueOf(message.getChatId()), message.getMessageId());
                         returnMessage.setChatId(String.valueOf(message.getChatId()));
                         returnMessage.setText("VIP qoshilish 100 ming som");
@@ -145,10 +164,10 @@ public class TaxiBOT extends TelegramLongPollingBot {
                         returnMessage.setReplyMarkup(markupInline);
                         execute(returnMessage);
                     }
-                } else if (message.getFrom().getUserName()== null&& matcher.find()) {
+                } else if (message.getFrom().getUserName() == null && matcher.find()) {
                     deleteMessage(String.valueOf(message.getChatId()), message.getMessageId());
                     returnMessage.setChatId(String.valueOf(message.getChatId()));
-                    returnMessage.setText("Hurmatli: " +message.getFrom().getFirstName()+" \n Iltimos siz bot orqali zakaz bering");
+                    returnMessage.setText("Hurmatli: " + message.getFrom().getFirstName() + " \n Iltimos siz bot orqali zakaz bering");
                     InlineKeyboardMarkup markupInline = new InlineKeyboardMarkup();
                     List<List<InlineKeyboardButton>> rowsInline = new ArrayList<>();
                     List<InlineKeyboardButton> rowInline = new ArrayList<>();
@@ -162,7 +181,7 @@ public class TaxiBOT extends TelegramLongPollingBot {
                     execute(returnMessage);
                     stageSong(message);
                 }
-            }else if (message.getChat().isUserChat()){
+            } else if (message.getChat().isUserChat()) {
                 Optional<User> optional = this.repository.findById(message.getChatId());
                 if (message.getText().equals("/start")) {
                     returnMessage = stageContact(message);
@@ -173,7 +192,7 @@ public class TaxiBOT extends TelegramLongPollingBot {
                         user.setUsername(update.getMessage().getChat().getUserName());
                         user.setFirstName(message.getChat().getFirstName());
                         repository.save(user);
-                    }else {
+                    } else {
                         User user = optional.get();
                         user.setStep(BotQuery.FIRST);
                         repository.save(user);
@@ -249,7 +268,7 @@ public class TaxiBOT extends TelegramLongPollingBot {
                     }
                 }
             }
-        }else if (message.hasContact()) {
+        } else if (message.hasContact()) {
             Optional<User> optional1 = this.repository.findById(message.getChatId());
 
             if (optional1.isPresent()) {
@@ -262,8 +281,8 @@ public class TaxiBOT extends TelegramLongPollingBot {
         }
     }
 
-    private void stageSong(Message message)  {
-        SendMessage returnMessage=new SendMessage();
+    private void stageSong(Message message) {
+        SendMessage returnMessage = new SendMessage();
         Optional<User> optional = this.repository.findById(message.getChatId());
 
         if (optional.isEmpty()) {
@@ -280,18 +299,18 @@ public class TaxiBOT extends TelegramLongPollingBot {
             rowsInline3.add(rowInline3);
             markupInline3.setKeyboard(rowsInline3);
             returnMessage.setReplyMarkup(markupInline3);
-           try {
-               execute(returnMessage);
-           }catch (TelegramApiException e){
-             SendMessage sendMessage=new SendMessage();
-               sendMessage.setChatId("538902740");
-               sendMessage.setText("Bu odamni nastrokasi yoppilgan");
-               try {
-                   execute(sendMessage);
-               } catch (TelegramApiException ex) {
-                   throw new RuntimeException(ex);
-               }
-           }
+            try {
+                execute(returnMessage);
+            } catch (TelegramApiException e) {
+                SendMessage sendMessage = new SendMessage();
+                sendMessage.setChatId("538902740");
+                sendMessage.setText("Bu odamni nastrokasi yoppilgan");
+                try {
+                    execute(sendMessage);
+                } catch (TelegramApiException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
 
         } else {
             //todo : adminn chat Id bolishi kerak
@@ -310,8 +329,8 @@ public class TaxiBOT extends TelegramLongPollingBot {
             returnMessage.setReplyMarkup(markupInline3);
             try {
                 execute(returnMessage);
-            }catch (TelegramApiException e){
-                SendMessage sendMessage=new SendMessage();
+            } catch (TelegramApiException e) {
+                SendMessage sendMessage = new SendMessage();
                 sendMessage.setChatId("538902740");
                 sendMessage.setText("Bu odamni nastrokasi yoppilgan");
                 try {
@@ -338,7 +357,7 @@ public class TaxiBOT extends TelegramLongPollingBot {
         returnMessage.setReplyMarkup(markupInline2);
         try {
             execute(returnMessage);
-        }catch (TelegramApiException e){
+        } catch (TelegramApiException e) {
             System.out.println("Buklenti nastrokasi shuning zakazni chiqarib bolmaydi");
         }
     }
