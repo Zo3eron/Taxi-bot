@@ -114,7 +114,7 @@ public class TaxiBOT extends TelegramLongPollingBot {
                         markupInline2.setKeyboard(rowsInline2);
                         returnMessage.setReplyMarkup(markupInline2);
                         execute(returnMessage);
-                    } else  if (message.getText().equals("Vip haqida ‼\uFE0F") || message.getText().equals("Orqaga") || message.getText().equals("Yolovchi\uD83E\uDDCD\u200D♂\uFE0F")|| message.getText().equals("Haydovchi\uD83D\uDE95")) {
+                    } else  if (message.getText().equals("Vip haqida ‼\uFE0F") || message.getText().equals("Orqaga") || message.getText().equals("Haydovchi\uD83D\uDE95")) {
                         deleteMessage(String.valueOf(message.getChatId()), message.getMessageId());
                         returnMessage.setChatId(String.valueOf(message.getChatId()));
                         returnMessage.setText("VIP qoshilish 100 ming som");
@@ -124,6 +124,21 @@ public class TaxiBOT extends TelegramLongPollingBot {
                         InlineKeyboardButton button = new InlineKeyboardButton();
                         button.setText("VIP");
                         button.setUrl("https://t.me/Sanjar_Kamilovich");
+                        rowInline.add(button);
+                        rowsInline.add(rowInline);
+                        markupInline.setKeyboard(rowsInline);
+                        returnMessage.setReplyMarkup(markupInline);
+                        execute(returnMessage);
+                    } else if (message.getText().equals("Yolovchi\uD83E\uDDCD\u200D♂\uFE0F")) {
+                        deleteMessage(String.valueOf(message.getChatId()), message.getMessageId());
+                        returnMessage.setChatId(String.valueOf(message.getChatId()));
+                        returnMessage.setText("Zakazingizni yozib qoldiring \n Bot orqali zakaz bering   ");
+                        InlineKeyboardMarkup markupInline = new InlineKeyboardMarkup();
+                        List<List<InlineKeyboardButton>> rowsInline = new ArrayList<>();
+                        List<InlineKeyboardButton> rowInline = new ArrayList<>();
+                        InlineKeyboardButton button = new InlineKeyboardButton();
+                        button.setText("Bot orqali zakaz berish");
+                        button.setUrl("https://t.me/Tashkent_bekabad_bot");
                         rowInline.add(button);
                         rowsInline.add(rowInline);
                         markupInline.setKeyboard(rowsInline);
