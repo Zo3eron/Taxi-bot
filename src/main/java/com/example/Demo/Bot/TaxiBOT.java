@@ -80,7 +80,7 @@ public class TaxiBOT extends TelegramLongPollingBot {
                         execute(returnMessage);
                         deleteMessage(String.valueOf(message.getChatId()), message.getMessageId());
 
-                        if (optional.isPresent()) {
+                      /*  if (optional.isPresent()) {
                             //todo : adminn chat Id bolishi kerak
                             returnMessage.setChatId("538902740");
                             returnMessage.setParseMode(ParseMode.HTML);
@@ -96,7 +96,7 @@ public class TaxiBOT extends TelegramLongPollingBot {
                             markupInline3.setKeyboard(rowsInline3);
                             returnMessage.setReplyMarkup(markupInline3);
                             execute(returnMessage);
-                        }
+                        }*/
                         // todo : vip grup id bolad
 
                         returnMessage.setChatId("-1002075492453");
@@ -131,7 +131,6 @@ public class TaxiBOT extends TelegramLongPollingBot {
                         bsd.setKeyboard(bcd);
                         returnMessage.setReplyMarkup(bsd);
                         execute(returnMessage);
-
 
                     } else if (message.getText().equals("Vip haqida ‼\uFE0F") || message.getText().equals("Orqaga") || message.getText().equals("Haydovchi\uD83D\uDE95")) {
                         deleteMessage(String.valueOf(message.getChatId()), message.getMessageId());
