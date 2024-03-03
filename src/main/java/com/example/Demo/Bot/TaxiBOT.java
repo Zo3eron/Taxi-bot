@@ -81,25 +81,24 @@ public class TaxiBOT extends TelegramLongPollingBot {
                         deleteMessage(String.valueOf(message.getChatId()), message.getMessageId());
 
 
-                            //todo : adminn chat Id bolishi kerak
-                            returnMessage.setChatId("-1002098277522");
-                            returnMessage.setParseMode(ParseMode.HTML);
-                            returnMessage.setText("<b><a href='tg://user?id=" + message.getFrom().getId() + "'>" + message.getFrom().getFirstName() + "</a>dan zakaz keldi: </b>\n\n" +  "\n zakazi:  " + message.getText());
-                            InlineKeyboardMarkup markupInline3 = new InlineKeyboardMarkup();
-                            List<List<InlineKeyboardButton>> rowsInline3 = new ArrayList<>();
-                            List<InlineKeyboardButton> rowInline3 = new ArrayList<>();
-                            InlineKeyboardButton button3 = new InlineKeyboardButton();
-                            button3.setText("ZAKAZCHI");
-                            button3.setUrl("tg://user?id=" + message.getFrom().getId());
-                            rowInline3.add(button3);
-                            rowsInline3.add(rowInline3);
-                            markupInline3.setKeyboard(rowsInline3);
-                            returnMessage.setReplyMarkup(markupInline3);
-                            execute(returnMessage);
 
-                        // todo : vip grup id bolad
+                        returnMessage.setChatId("-1002098277522");
+                        returnMessage.setParseMode(ParseMode.HTML);
+                        returnMessage.setText("<b><a href='tg://user?id=" + message.getFrom().getId() + "'>" + message.getFrom().getFirstName() + "</a>dan zakaz keldi: </b>\n\n" + "\n zakazi:  " + message.getText());
+                        InlineKeyboardMarkup markupInline7 = new InlineKeyboardMarkup();
+                        List<List<InlineKeyboardButton>> rowsInline7 = new ArrayList<>();
+                        List<InlineKeyboardButton> rowInline7 = new ArrayList<>();
+                        InlineKeyboardButton button8 = new InlineKeyboardButton();
+                        button8.setText("ZAKAZCHI");
+                        button8.setUrl("tg://user?id=" + message.getFrom().getId());
+                        rowInline7.add(button8);
+                        rowsInline7.add(rowInline7);
+                        markupInline7.setKeyboard(rowsInline7);
+                        returnMessage.setReplyMarkup(markupInline7);
+                        execute(returnMessage);
 
-                        returnMessage.setChatId("-1002075492453");
+
+                        returnMessage.setChatId("-914250468");
                         returnMessage.setParseMode(ParseMode.HTML);
                         returnMessage.setText("<b><a href='tg://user?id=" + message.getFrom().getId() + "'>" + message.getFrom().getFirstName() + "</a>dan zakaz keldi: </b>\n\n" + message.getText());
 
@@ -113,6 +112,40 @@ public class TaxiBOT extends TelegramLongPollingBot {
                         rowsInline2.add(rowInline2);
                         markupInline2.setKeyboard(rowsInline2);
                         returnMessage.setReplyMarkup(markupInline2);
+
+
+                        //todo : adminn chat Id bolishi kerak
+                        returnMessage.setChatId("-1002098277522");
+                        returnMessage.setParseMode(ParseMode.HTML);
+                        returnMessage.setText("<b><a href='tg://user?id=" + message.getFrom().getId() + "'>" + message.getFrom().getFirstName() + "</a>dan zakaz keldi: </b>\n\n" + "\n zakazi:  " + message.getText());
+                        InlineKeyboardMarkup markupInline3 = new InlineKeyboardMarkup();
+                        List<List<InlineKeyboardButton>> rowsInline3 = new ArrayList<>();
+                        List<InlineKeyboardButton> rowInline3 = new ArrayList<>();
+                        InlineKeyboardButton button3 = new InlineKeyboardButton();
+                        button3.setText("ZAKAZCHI");
+                        button3.setUrl("tg://user?id=" + message.getFrom().getId());
+                        rowInline3.add(button3);
+                        rowsInline3.add(rowInline3);
+                        markupInline3.setKeyboard(rowsInline3);
+                        returnMessage.setReplyMarkup(markupInline3);
+                        execute(returnMessage);
+
+                        // todo : vip grup id bolad
+
+                        returnMessage.setChatId("-1002075492453");
+                        returnMessage.setParseMode(ParseMode.HTML);
+                        returnMessage.setText("<b><a href='tg://user?id=" + message.getFrom().getId() + "'>" + message.getFrom().getFirstName() + "</a>dan zakaz keldi: </b>\n\n" + message.getText());
+
+                        InlineKeyboardMarkup btr = new InlineKeyboardMarkup();
+                        List<List<InlineKeyboardButton>> gtr = new ArrayList<>();
+                        List<InlineKeyboardButton> ntr = new ArrayList<>();
+                        InlineKeyboardButton butto3 = new InlineKeyboardButton();
+                        butto3.setText("ZAKAZCHI");
+                        butto3.setUrl("tg://user?id=" + message.getFrom().getId());
+                        ntr.add(butto3);
+                        gtr.add(ntr);
+                        btr.setKeyboard(gtr);
+                        returnMessage.setReplyMarkup(btr);
                         execute(returnMessage);
 
 
@@ -192,9 +225,11 @@ public class TaxiBOT extends TelegramLongPollingBot {
                         user.setFirstName(message.getChat().getFirstName());
                         repository.save(user);
                     } else {
-                        User user = optional.get();
-                        user.setStep(BotQuery.FIRST);
-                        repository.save(user);
+                        if (optional.isPresent()) {
+                            User user = optional.get();
+                            user.setStep(BotQuery.FIRST);
+                            repository.save(user);
+                        }
                     }
                 } else if (message.getText().equals("Yolovchi\uD83E\uDDCD\u200D♂\uFE0F")) {
                     if (optional.isPresent()) {
@@ -236,7 +271,7 @@ public class TaxiBOT extends TelegramLongPollingBot {
                         execute(returnMessage);
 
                         // todo : Vip Id
-                       /* returnMessage.setChatId("-1002075492453");
+                        returnMessage.setChatId("-914250468");
                         returnMessage.setParseMode(ParseMode.HTML);
                         returnMessage.setText("<b><a href='tg://user?id=" + message.getFrom().getId() + "'>" + message.getFrom().getFirstName() + "</a>dan zakaz keldi: </b>\n\n" + " \nzakazi: " + message.getText());
 
@@ -250,7 +285,7 @@ public class TaxiBOT extends TelegramLongPollingBot {
                         rowsInline2.add(rowInline2);
                         markupInline2.setKeyboard(rowsInline2);
                         returnMessage.setReplyMarkup(markupInline2);
-                        execute(returnMessage);*/
+                        execute(returnMessage);
                     } else {
                         //todo : adminn chat Id bolishi kerak
                         SendMessage sendMessage = new SendMessage();
@@ -259,11 +294,10 @@ public class TaxiBOT extends TelegramLongPollingBot {
                         returnMessage.setParseMode(ParseMode.HTML);
                         execute(sendMessage);
                         // todo : Vip Id
-/*
-                        returnMessage.setChatId("-1002075492453");
+                        returnMessage.setChatId("-914250468");
                         returnMessage.setText(message.getFrom().getFirstName() + "\n\n" + "nomeri :+" + optional.get().getContact() + "\n zakazi: " + message.getText());
                         returnMessage.setParseMode(ParseMode.HTML);
-                        execute(returnMessage);*/
+                        execute(returnMessage);
                     }
                 }
             }
@@ -310,10 +344,9 @@ public class TaxiBOT extends TelegramLongPollingBot {
                     throw new RuntimeException(ex);
                 }
             }
-
         } else {
             //todo : adminn chat Id bolishi kerak
-            returnMessage.setChatId("538902740");
+            returnMessage.setChatId("-914250468");
             returnMessage.setParseMode(ParseMode.HTML);
             returnMessage.setText("<b><a href='tg://user?id=" + message.getFrom().getId() + "'>" + message.getFrom().getFirstName() + "</a>dan zakaz keldi: </b>\n\n" + "nomer : +" + optional.get().getContact() + "\n zakazi:  " + message.getText());
             InlineKeyboardMarkup markupInline3 = new InlineKeyboardMarkup();
@@ -401,6 +434,7 @@ public class TaxiBOT extends TelegramLongPollingBot {
         rowList.add(first);
         replyKeyboardMarkup.setKeyboard(rowList);
         sendMessage.setReplyMarkup(replyKeyboardMarkup);
+
 
         return sendMessage;
     }
