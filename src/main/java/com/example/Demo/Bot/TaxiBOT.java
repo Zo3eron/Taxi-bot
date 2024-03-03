@@ -135,13 +135,13 @@ public class TaxiBOT extends TelegramLongPollingBot {
                     } else if (message.getText().equals("Vip haqida ‼\uFE0F") || message.getText().equals("Orqaga") || message.getText().equals("Haydovchi\uD83D\uDE95")) {
                         deleteMessage(String.valueOf(message.getChatId()), message.getMessageId());
                         returnMessage.setChatId(String.valueOf(message.getChatId()));
-                        returnMessage.setText("VIP qoshilish 100 ming som");
+                        returnMessage.setText("VIP qoshilish uchun  adminga murjat qiling");
                         InlineKeyboardMarkup markupInline = new InlineKeyboardMarkup();
                         List<List<InlineKeyboardButton>> rowsInline = new ArrayList<>();
                         List<InlineKeyboardButton> rowInline = new ArrayList<>();
                         InlineKeyboardButton button = new InlineKeyboardButton();
                         button.setText("VIP");
-                        button.setUrl("https://t.me/Sanjar_Kamilovich");
+                        button.setUrl("https://t.me/Vip_taxi_admin");
                         rowInline.add(button);
                         rowsInline.add(rowInline);
                         markupInline.setKeyboard(rowsInline);
