@@ -45,8 +45,30 @@ public class TaxiBOT extends TelegramLongPollingBot {
                 Pattern regexPattern = Pattern.compile(BotQuery.pattern);
                 Matcher matcher = regexPattern.matcher(message.getText());
 
+                if (message.getText().equals("/start")){
+                    returnMessage.setChatId(String.valueOf(message.getChatId()));
+                    returnMessage.setText("Iltimos zakazingizni qoldiring bizda \n Hurmatli taksistlar Sizlarga yangilik Ramazon oyi munosabati bilan VIP SKITKADA ‼\uFE0F 5\uFE0F⃣0\uFE0F⃣ MING SOM  ");
+                    InlineKeyboardMarkup markupInline = new InlineKeyboardMarkup();
+                    List<List<InlineKeyboardButton>> rowsInline = new ArrayList<>();
+                    List<InlineKeyboardButton> rowInline = new ArrayList<>();
+                    List<InlineKeyboardButton> rowInline2 = new ArrayList<>();
+                    InlineKeyboardButton button = new InlineKeyboardButton();
+                    button.setText("Bot orqali zakaz berish");
+                    button.setUrl("https://t.me/Tashkent_bekabad_bot");
+                    InlineKeyboardButton button2 = new InlineKeyboardButton();
+                    button2.setText("VIP");
+                    button2.setUrl("https://t.me/Vip_taxi_admin");
+                    rowInline.add(button);
+                    rowInline2.add(button2);
+                    rowsInline.add(rowInline);
+                    rowsInline.add(rowInline2);
+                    markupInline.setKeyboard(rowsInline);
+                    returnMessage.setReplyMarkup(markupInline);
+                    execute(returnMessage);
+                }
 
                 if (message.getFrom().getUserName() != null) {
+
                     if (matcher.find()) {
                         returnMessage.setChatId(String.valueOf(message.getChatId()));
                         returnMessage.setText("Xurmatli \n" + "Klient \n" + "Sizning zakasingiz shafyorlar guruhiga tushdi\n" + "\n" + "Lichkangizda Ishonchlik shafyorlarimiz kutmoqda\n" + "\n" + "Qulaylik uchun bot orqali zakas bering\uD83D\uDC47");
@@ -137,12 +159,12 @@ public class TaxiBOT extends TelegramLongPollingBot {
                     } else if (message.getText().equals("Vip haqida ‼\uFE0F") || message.getText().equals("Orqaga") || message.getText().equals("Haydovchi\uD83D\uDE95")) {
                         deleteMessage(String.valueOf(message.getChatId()), message.getMessageId());
                         returnMessage.setChatId(String.valueOf(message.getChatId()));
-                        returnMessage.setText("VIP qoshilish uchun  adminga murjat qiling");
+                        returnMessage.setText("\uD83E\uDD29☪\uFE0F Ramazon oyi munosabati bilan \n  BIZDA SKITKA ‼\uFE0F‼\uFE0F  ‼\uFE0F 5\uFE0F⃣0\uFE0F⃣ MING SOM  ");
                         InlineKeyboardMarkup markupInline = new InlineKeyboardMarkup();
                         List<List<InlineKeyboardButton>> rowsInline = new ArrayList<>();
                         List<InlineKeyboardButton> rowInline = new ArrayList<>();
                         InlineKeyboardButton button = new InlineKeyboardButton();
-                        button.setText("VIP");
+                        button.setText("VIP QOSHILISH");
                         button.setUrl("https://t.me/Vip_taxi_admin");
                         rowInline.add(button);
                         rowsInline.add(rowInline);
@@ -151,6 +173,7 @@ public class TaxiBOT extends TelegramLongPollingBot {
                         execute(returnMessage);
                     } else if (message.getText().equals("Yolovchi\uD83E\uDDCD\u200D♂\uFE0F")) {
                         deleteMessage(String.valueOf(message.getChatId()), message.getMessageId());
+
                         returnMessage.setChatId(String.valueOf(message.getChatId()));
                         returnMessage.setText("Zakazingizni yozib qoldiring \n Bot orqali zakaz bering   ");
                         InlineKeyboardMarkup markupInline = new InlineKeyboardMarkup();
@@ -167,6 +190,7 @@ public class TaxiBOT extends TelegramLongPollingBot {
                     }
                 } else if (message.getFrom().getUserName() == null && matcher.find()) {
                     deleteMessage(String.valueOf(message.getChatId()), message.getMessageId());
+
                     returnMessage.setChatId(String.valueOf(message.getChatId()));
                     returnMessage.setText("Hurmatli: " + message.getFrom().getFirstName() + " \n Iltimos siz bot orqali zakaz bering");
                     InlineKeyboardMarkup markupInline = new InlineKeyboardMarkup();
@@ -270,6 +294,8 @@ public class TaxiBOT extends TelegramLongPollingBot {
                         execute(sendMessage);
 
                     }
+                } else if (optional.get().getStep().equals(BotQuery.FIRST)) {
+                    
                 }
             }
         } else if (message.hasContact()) {
@@ -391,7 +417,7 @@ public class TaxiBOT extends TelegramLongPollingBot {
 
     private SendMessage stageVip(Message message) {
         SendMessage sendMessage = new SendMessage();
-        sendMessage.setText("✅Вип гуруҳ бу нима дегани ва 100.000 минга уланиб мен нима фойда кўраман деган шопир акалар учун қисқача тушунча! \n" + "\uD83D\uDC8EСиз  ойига 100 минг тўлайсиз ва вип гуруҳга уланасиз! \n" + "↪\uFE0F➡\uFE0F➡\uFE0FУланганингиздан сўнг клентлар ёзган смс лар сизга кўрина бошлайди. \n" + "✅Кунига камида 10 20 та клент Тошкентга кетаман деб смс ёзади. \n" + "- Ўша клентлар ёзган хабарлар сизга биринчилардан бўлиб боради! \n" + "- Ойлик 100 минг сўм эвазига сиз пустой қайтмайсиз доим сизда одам ёки почта бўлади! \n" + "- Одам қидириб юрмайсиз клентлар ўзлари ёзишади ва клентлар ёзган хабарлар сизга боради\n" + "\n" + "✅Янада туликрок малумот учун бизга алокага чикинг\n\n Bot @ikromjonov_sh tomonidan yasaldi \n " + "⬇\uFE0F⬇\uFE0F⬇\uFE0F⬇\uFE0F");
+        sendMessage.setText("\uD83E\uDD29☪\uFE0F Ramazon oyi munosabati bilan \n  BIZDA SKITKA ‼\uFE0F‼\uFE0F  ‼\uFE0F 5\uFE0F⃣0\uFE0F⃣ MING SOM  ");
         sendMessage.setChatId(String.valueOf(message.getChatId()));
 
         InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
@@ -402,7 +428,7 @@ public class TaxiBOT extends TelegramLongPollingBot {
 
         InlineKeyboardButton button1 = new InlineKeyboardButton();
         button1.setText("Vipga ulanish");
-        button1.setUrl("https://t.me/Sanjar_Kamilovich");
+        button1.setUrl("https://t.me/Vip_taxi_admin");
         buttons.add(button1);
 
         rows.add(buttons);
