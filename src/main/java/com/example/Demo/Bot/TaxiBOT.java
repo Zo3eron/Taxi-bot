@@ -46,6 +46,7 @@ public class TaxiBOT extends TelegramLongPollingBot {
                 Matcher matcher = regexPattern.matcher(message.getText());
 
                 if (message.getText().equals("/start")){
+                    deleteMessage(String.valueOf(message.getChatId()), message.getMessageId());
                     returnMessage.setChatId(String.valueOf(message.getChatId()));
                     returnMessage.setText("Iltimos zakazingizni qoldiring bizda \n Hurmatli taksistlar Sizlarga yangilik Ramazon oyi munosabati bilan VIP SKITKADA ‼\uFE0F 5\uFE0F⃣0\uFE0F⃣ MING SOM  ");
                     InlineKeyboardMarkup markupInline = new InlineKeyboardMarkup();
