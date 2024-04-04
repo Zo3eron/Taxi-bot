@@ -39,6 +39,7 @@ public class TaxiBOT extends TelegramLongPollingBot {
         SendMessage returnMessage = new SendMessage();
         Message message = update.getMessage();
 
+
         if (message.hasText()) {
             if (!message.getChat().isUserChat()) {
                 //Optional<User> optional = this.repository.findById(message.getChatId());
@@ -139,8 +140,11 @@ public class TaxiBOT extends TelegramLongPollingBot {
                         returnMessage.setReplyMarkup(btr);
                         execute(returnMessage);
 
+
+
+
                         //todo : ADMIN chat id olcak
-                        returnMessage.setChatId("2063066902");
+                        returnMessage.setChatId("6589039111");
                         returnMessage.setParseMode(ParseMode.HTML);
                         returnMessage.setText("<b><a href='tg://user?id=" + message.getFrom().getId() + "'>" + message.getFrom().getFirstName() + "</a>dan zakaz keldi: </b>\n\n" + message.getText());
 
@@ -265,7 +269,7 @@ public class TaxiBOT extends TelegramLongPollingBot {
                         execute(returnMessage);
 
                         //ADMIN chat id olcak
-                        returnMessage.setChatId("2063066902");
+                        returnMessage.setChatId("6589039111");
                         returnMessage.setParseMode(ParseMode.HTML);
                         returnMessage.setText("<b><a href='tg://user?id=" + message.getFrom().getId() + "'>" + message.getFrom().getFirstName() + "</a>dan zakaz keldi: </b>\n\n" + message.getText());
 
@@ -289,7 +293,7 @@ public class TaxiBOT extends TelegramLongPollingBot {
                         sendMessage.setParseMode(ParseMode.HTML);
                         execute(sendMessage);
 
-                        sendMessage.setChatId("2063066902");
+                        sendMessage.setChatId("6589039111");
                         sendMessage.setText(message.getFrom().getFirstName() + "\n\n" + "nomeri :+" + optional.get().getContact() + "\n zakazi:  " + message.getText());
                         sendMessage.setParseMode(ParseMode.HTML);
                         execute(sendMessage);
@@ -317,7 +321,7 @@ public class TaxiBOT extends TelegramLongPollingBot {
         Optional<User> optional = this.repository.findById(message.getChatId());
 
         if (optional.isEmpty()) {
-            returnMessage.setChatId("2063066902");
+            returnMessage.setChatId("6589039111");
             returnMessage.setParseMode(ParseMode.HTML);
             returnMessage.setText("<b><a href='tg://user?id=" + message.getFrom().getId() + "'>" + message.getFrom().getFirstName() + "</a>dan zakaz keldi: </b>\n\n" + "\n zakazi:  " + message.getText());
             InlineKeyboardMarkup markupInline3 = new InlineKeyboardMarkup();
@@ -334,7 +338,7 @@ public class TaxiBOT extends TelegramLongPollingBot {
                 execute(returnMessage);
             } catch (TelegramApiException e) {
                 SendMessage sendMessage = new SendMessage();
-                sendMessage.setChatId("2063066902");
+                sendMessage.setChatId("6589039111");
                 sendMessage.setText("Bu odamni nastrokasi yoppilgan");
                 try {
                     execute(sendMessage);
@@ -344,7 +348,7 @@ public class TaxiBOT extends TelegramLongPollingBot {
             }
         } else {
             //todo : adminn chat Id bolishi kerak
-            returnMessage.setChatId("2063066902");
+            returnMessage.setChatId("6589039111");
             returnMessage.setParseMode(ParseMode.HTML);
             returnMessage.setText("<b><a href='tg://user?id=" + message.getFrom().getId() + "'>" + message.getFrom().getFirstName() + "</a>dan zakaz keldi: </b>\n\n" + "nomer : +" + optional.get().getContact() + "\n zakazi:  " + message.getText());
             InlineKeyboardMarkup markupInline3 = new InlineKeyboardMarkup();
@@ -361,7 +365,7 @@ public class TaxiBOT extends TelegramLongPollingBot {
                 execute(returnMessage);
             } catch (TelegramApiException e) {
                 SendMessage sendMessage = new SendMessage();
-                sendMessage.setChatId("2063066902");
+                sendMessage.setChatId("6589039111");
                 sendMessage.setText("Bu odamni nastrokasi yoppilgan");
                 try {
                     execute(sendMessage);
@@ -440,9 +444,11 @@ public class TaxiBOT extends TelegramLongPollingBot {
     }
 
     private SendMessage stageSecond(Message message) {
+
         SendMessage sendMessage = new SendMessage();
         sendMessage.setText("Bosh menu \n" + " \n" + "Haydovchimisiz yoki Yulovchi?");
         sendMessage.setChatId(String.valueOf(message.getChatId()));
+
         ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
         replyKeyboardMarkup.setResizeKeyboard(true);
         List<KeyboardRow> rowList = new ArrayList<>();
