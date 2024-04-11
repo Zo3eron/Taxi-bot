@@ -33,6 +33,20 @@ public class TaxiBOT extends TelegramLongPollingBot {
 
     private final UserRepository repository;
 
+
+
+
+
+
+            // Admin tomonidan yuborilgan habarni tekshirish
+
+
+
+
+
+
+
+
     @SneakyThrows
     @Override
     public void onUpdateReceived(Update update) {
@@ -107,7 +121,7 @@ public class TaxiBOT extends TelegramLongPollingBot {
 
 
                         //todo : 2- gr chat Id bolishi kerak
-                        returnMessage.setChatId("-1002026490224");
+                        returnMessage.setChatId("-1001866395542");
                         returnMessage.setParseMode(ParseMode.HTML);
                         returnMessage.setText("<b><a href='tg://user?id=" + message.getFrom().getId() + "'>" + message.getFrom().getFirstName() + "</a>dan zakaz keldi: </b>\n\n" + "\n zakazi:  " + message.getText());
                         InlineKeyboardMarkup markupInline3 = new InlineKeyboardMarkup();
@@ -212,6 +226,7 @@ public class TaxiBOT extends TelegramLongPollingBot {
                     stageSong(message);
                 }
             } else if (message.getChat().isUserChat()) {
+
                 Optional<User> optional = this.repository.findById(message.getChatId());
                 if (message.getText().equals("/start")) {
                     returnMessage = stageContact(message);
@@ -396,7 +411,7 @@ public class TaxiBOT extends TelegramLongPollingBot {
         }
 
         //todo : 2- gr chat Id bolishi kerak
-        returnMessage.setChatId("-1002026490224");
+        returnMessage.setChatId("-1001866395542");
         returnMessage.setParseMode(ParseMode.HTML);
         returnMessage.setText("<b><a href='tg://user?id=" + message.getFrom().getId() + "'>" + message.getFrom().getFirstName() + "</a>dan zakaz keldi: </b>\n\n" + message.getText());
 
