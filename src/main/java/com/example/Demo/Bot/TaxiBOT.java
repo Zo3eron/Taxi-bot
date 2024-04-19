@@ -5,6 +5,7 @@ import lombok.SneakyThrows;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.ParseMode;
+import org.telegram.telegrambots.meta.api.methods.send.SendLocation;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.updatingmessages.DeleteMessage;
 import org.telegram.telegrambots.meta.api.methods.updatingmessages.EditMessageReplyMarkup;
@@ -63,7 +64,7 @@ public class TaxiBOT extends TelegramLongPollingBot {
                 if (message.getText().equals("/start")){
                     deleteMessage(String.valueOf(message.getChatId()), message.getMessageId());
                     returnMessage.setChatId(String.valueOf(message.getChatId()));
-                    returnMessage.setText("Iltimos zakazingizni qoldiring bizda \n Hurmatli taksistlar Sizlarga yangilik Ramazon oyi munosabati bilan VIP SKITKADA ‼\uFE0F 5\uFE0F⃣0\uFE0F⃣ MING SOM  ");
+                    returnMessage.setText("Iltimos zakazingizni qoldiring bizda \n VIP gruhga qoshilish uchun adminga murojat qiling ");
                     InlineKeyboardMarkup markupInline = new InlineKeyboardMarkup();
                     List<List<InlineKeyboardButton>> rowsInline = new ArrayList<>();
                     List<InlineKeyboardButton> rowInline = new ArrayList<>();
@@ -178,7 +179,7 @@ public class TaxiBOT extends TelegramLongPollingBot {
                     } else if (message.getText().equals("Vip haqida ‼\uFE0F") || message.getText().equals("Orqaga") || message.getText().equals("Haydovchi\uD83D\uDE95")) {
                         deleteMessage(String.valueOf(message.getChatId()), message.getMessageId());
                         returnMessage.setChatId(String.valueOf(message.getChatId()));
-                        returnMessage.setText("\uD83E\uDD29☪\uFE0F Ramazon oyi munosabati bilan \n  BIZDA SKITKA ‼\uFE0F‼\uFE0F  ‼\uFE0F 5\uFE0F⃣0\uFE0F⃣ MING SOM  ");
+                        returnMessage.setText("VIP gruhga qoshilish uchun adminga murojat qiling ⏬");
                         InlineKeyboardMarkup markupInline = new InlineKeyboardMarkup();
                         List<List<InlineKeyboardButton>> rowsInline = new ArrayList<>();
                         List<InlineKeyboardButton> rowInline = new ArrayList<>();
@@ -328,6 +329,8 @@ public class TaxiBOT extends TelegramLongPollingBot {
             }
             returnMessage = stageSecond(message);
             execute(returnMessage);
+        } else if (message.hasLocation()) {
+            deleteMessage(String.valueOf(message.getChatId()), message.getMessageId());
         }
     }
 
@@ -437,7 +440,7 @@ public class TaxiBOT extends TelegramLongPollingBot {
 
     private SendMessage stageVip(Message message) {
         SendMessage sendMessage = new SendMessage();
-        sendMessage.setText("\uD83E\uDD29☪\uFE0F Ramazon oyi munosabati bilan \n  BIZDA SKITKA ‼\uFE0F‼\uFE0F  ‼\uFE0F 5\uFE0F⃣0\uFE0F⃣ MING SOM  ");
+        sendMessage.setText("VIP gruhga qoshilish uchun adminga murojat qiling ⏬");
         sendMessage.setChatId(String.valueOf(message.getChatId()));
 
         InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
