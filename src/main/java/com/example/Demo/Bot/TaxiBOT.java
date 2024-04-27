@@ -511,12 +511,15 @@ public class TaxiBOT extends TelegramLongPollingBot {
 
     @Override
     public String getBotUsername() {
-        return "@Tashkent_bekabad_bot";
+        return "@Bekobod_Toshkent_taxi_bot";
     }
+
+    //6960202456:AAG6pdKt2ABxzUVSzwfI3LJZb3qeWP9PhxY
+
 
     @Override
     public String getBotToken() {
-        return "6960202456:AAG6pdKt2ABxzUVSzwfI3LJZb3qeWP9PhxY";
+        return "6342415204:AAGicl3TD8cX8kXXus3DcTiLc-zUpM2S0nM";
     }
 
 }
