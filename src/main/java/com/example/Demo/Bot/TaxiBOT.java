@@ -125,7 +125,7 @@ public class TaxiBOT extends TelegramLongPollingBot {
                         // ozgaradii
 
 
-                        returnMessage.setChatId("-1002217221517");
+                        returnMessage.setChatId("-1001866395542");
                         returnMessage.setParseMode(ParseMode.HTML);
                         returnMessage.setText("<b><a href='tg://user?id=" + message.getFrom().getId() + "'>" + message.getFrom().getFirstName() + "</a>dan zakaz keldi: </b>\n\n" + "\n zakazi:  " + message.getText());
                         InlineKeyboardMarkup markupInline3 = new InlineKeyboardMarkup();
@@ -142,7 +142,7 @@ public class TaxiBOT extends TelegramLongPollingBot {
 
                         // todo : vip grup id bolad
 
-                        returnMessage.setChatId("-1002217221517");
+                        returnMessage.setChatId("-1001866395542");
                         returnMessage.setParseMode(ParseMode.HTML);
                         returnMessage.setText("<b><a href='tg://user?id=" + message.getFrom().getId() + "'>" + message.getFrom().getFirstName() + "</a>dan zakaz keldi: </b>\n\n" + message.getText());
 
@@ -396,7 +396,7 @@ public class TaxiBOT extends TelegramLongPollingBot {
             }
         }
         //vip grup id bolad
-        returnMessage.setChatId("-1002217221517");
+        returnMessage.setChatId("-1001866395542");
         returnMessage.setParseMode(ParseMode.HTML);
         returnMessage.setText("<b><a href='tg://user?id=" + message.getFrom().getId() + "'>" + message.getFrom().getFirstName() + "</a>dan zakaz keldi: </b>\n\n" + message.getText());
 
@@ -418,7 +418,7 @@ public class TaxiBOT extends TelegramLongPollingBot {
 
         //todo : 2- gr chat Id bolishi kerak
         // ozgaradi
-        returnMessage.setChatId("-1002217221517");
+        returnMessage.setChatId("-1001866395542");
         returnMessage.setParseMode(ParseMode.HTML);
         returnMessage.setText("<b><a href='tg://user?id=" + message.getFrom().getId() + "'>" + message.getFrom().getFirstName() + "</a>dan zakaz keldi: </b>\n\n" + message.getText());
 
