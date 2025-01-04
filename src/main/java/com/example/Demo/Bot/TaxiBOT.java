@@ -125,7 +125,7 @@ public class TaxiBOT extends TelegramLongPollingBot {
                         // ozgaradii
 
 
-                        returnMessage.setChatId("-1002378525775");
+                        returnMessage.setChatId("-1002325046671");
                         returnMessage.setParseMode(ParseMode.HTML);
                         returnMessage.setText("<b><a href='tg://user?id=" + message.getFrom().getId() + "'>" + message.getFrom().getFirstName() + "</a>dan zakaz keldi: </b>\n\n" + "\n zakazi:  " + message.getText());
                         InlineKeyboardMarkup markupInline3 = new InlineKeyboardMarkup();
@@ -141,8 +141,8 @@ public class TaxiBOT extends TelegramLongPollingBot {
                         execute(returnMessage);
 
                         // todo : vip grup id bolad
-                       // -1002378525775
-                        returnMessage.setChatId("-1002378525775");
+                       // -1002325046671
+                        returnMessage.setChatId("-1002325046671");
                         returnMessage.setParseMode(ParseMode.HTML);
                         returnMessage.setText("<b><a href='tg://user?id=" + message.getFrom().getId() + "'>" + message.getFrom().getFirstName() + "</a>dan zakaz keldi: </b>\n\n" + message.getText());
 
@@ -396,7 +396,7 @@ public class TaxiBOT extends TelegramLongPollingBot {
             }
         }
         //vip grup id bolad
-        returnMessage.setChatId("-1002378525775");
+        returnMessage.setChatId("-1002325046671");
         returnMessage.setChatId("");
         returnMessage.setParseMode(ParseMode.HTML);
         returnMessage.setText("<b><a href='tg://user?id=" + message.getFrom().getId() + "'>" + message.getFrom().getFirstName() + "</a>dan zakaz keldi: </b>\n\n" + message.getText());
@@ -418,8 +418,8 @@ public class TaxiBOT extends TelegramLongPollingBot {
         }
 
         //todo : 2- gr chat Id bolishi kerak
-        // ozgaradi-1002378525775
-        returnMessage.setChatId("-1002378525775");
+        // ozgaradi-1002325046671
+        returnMessage.setChatId("-1002325046671");
         returnMessage.setParseMode(ParseMode.HTML);
         returnMessage.setText("<b><a href='tg://user?id=" + message.getFrom().getId() + "'>" + message.getFrom().getFirstName() + "</a>dan zakaz keldi: </b>\n\n" + message.getText());
 
